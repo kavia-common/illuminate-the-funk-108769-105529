@@ -1,82 +1,26 @@
-# Lightweight React Template for KAVIA
+# Illuminate the Funk — Frontend
 
-This project provides a minimal React template with a clean, modern UI and minimal dependencies.
+A luxury-meets-funky landing for limited-edition candles. Built with pure React and CSS, no extra UI libs.
 
-## Features
+Preview
+- From frontend_react: npm start
+- Preview URL: http://localhost:3000
 
-- **Lightweight**: No heavy UI frameworks - uses only vanilla CSS and React
-- **Modern UI**: Clean, responsive design with KAVIA brand styling
-- **Fast**: Minimal dependencies for quick loading times
-- **Simple**: Easy to understand and modify
+What’s included
+- Full-screen hero carousel with headline and coral-hover CTA
+- Story two-column section with limited/scarce badge
+- Interactive product grid with hover transitions and “View Details”
+- Countdown hype zone (dusk-blue feel) with animated timer and lime-bordered waitlist button
+- Craft process steps with micro-animations
+- Testimonials
+- Community sign-up with animated feedback
+- Minimal, “stadium” footer with brand and social placeholders
+- Raleway font site-wide, subtle glow/shimmer animations, limited-edition cues
 
-## Getting Started
+Colors/Theme
+- Off-white: #F9F8F6
+- Charcoal: #2F2F32
+- Rose-tan: #E8AFAF
+- Dusk-blue, Coral, Lime, Champagne approximations in CSS variables
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-### `npm test`
-
-Launches the test runner in interactive watch mode.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-## Customization
-
-### Colors
-
-The main brand colors are defined as CSS variables in `src/App.css`:
-
-```css
-:root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
-}
-```
-
-### Components
-
-This template uses pure HTML/CSS components instead of a UI framework. You can find component styles in `src/App.css`. 
-
-Common components include:
-- Buttons (`.btn`, `.btn-large`)
-- Container (`.container`)
-- Navigation (`.navbar`)
-- Typography (`.title`, `.subtitle`, `.description`)
-
-## Learn More
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+No environment variables required. All content is dummy/sample and ready to preview immediately.
