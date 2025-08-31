@@ -1,7 +1,39 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import './App.css';
 
-// Simple in-file placeholder images (gradients) to avoid external assets
+/**
+ * Curated on-brand, high-quality image URLs.
+ * These are royalty-free demo links; replace with brand CDN paths in production.
+ * We keep gradients as graceful fallbacks for when images fail to load.
+ */
+const IMG = {
+  hero1:
+    'https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=MnwyMDk0MTh8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBsaWZlc3R5bGUlMjBzaGVlbnxlbnwwfHx8fDE%3D',
+  hero2:
+    'https://images.unsplash.com/photo-1512303452020-97651d2e4b43?q=80&w=2000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=MnwyMDk0MTh8MHwxfHNlYXJjaHwyfHxjb2xvcmZ1bCUyMGFueXRoaW5nfGVufDB8fHx8MQ%3D%3D',
+  hero3:
+    'https://images.unsplash.com/photo-1557683311-eac922347aa1?q=80&w=2000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=MnwyMDk0MTh8MHwxfHNlYXJjaHwxfHxncmFkaWVudCUyMGx1eHVyeXxlbnwwfHx8fDE%3D',
+  story:
+    'https://images.unsplash.com/photo-1547887537-6158d64c9b4e?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3',
+  product1:
+    'https://images.unsplash.com/photo-1519681393784-7f06f8f9d6f2?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3',
+  product2:
+    'https://images.unsplash.com/photo-1545235617-9465d2a55698?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3',
+  product3:
+    'https://images.unsplash.com/photo-1532635223-6c1ae1c1d99a?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3',
+  product4:
+    'https://images.unsplash.com/photo-1497032205916-ac775f0649ae?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3',
+  product5:
+    'https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3',
+  product6:
+    'https://images.unsplash.com/photo-1542831371-d531d36971e6?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3',
+  hype:
+    'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3',
+  community:
+    'https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3',
+};
+
+// Simple gradient fallback
 const gradient = (from, to) =>
   `linear-gradient(135deg, ${from} 0%, ${to} 100%)`;
 
@@ -24,22 +56,28 @@ export default function App() {
         headline: 'Illuminate the Funk',
         sub: 'Limited-edition luxury candles, crafted to spark joy.',
         cta: 'Shop the Drop',
-        bg: gradient('rgba(232,175,175,0.5)', 'rgba(245,210,210,0.9)'),
+        bgImg: IMG.hero1,
+        bgFallback: gradient('rgba(232,175,175,0.5)', 'rgba(245,210,210,0.9)'),
         tag: 'LIMITED • BATCH NO. 07',
+        alt: 'Hero shot with luxe, glowy ambiance and warm tones',
       },
       {
         headline: 'Whimsical Glow',
         sub: 'Playful scents with elegant undertones.',
         cta: 'Explore Scents',
-        bg: gradient('rgba(230,240,255,0.7)', 'rgba(180,200,240,0.9)'),
+        bgImg: IMG.hero2,
+        bgFallback: gradient('rgba(230,240,255,0.7)', 'rgba(180,200,240,0.9)'),
         tag: 'EXCLUSIVE • HAND-POURED',
+        alt: 'Colorful abstract lights with a playful, premium mood',
       },
       {
         headline: 'Crafted for Moments',
         sub: 'Designed to make memories shimmer.',
         cta: 'See Craft Process',
-        bg: gradient('rgba(255,250,220,0.7)', 'rgba(255,235,180,0.9)'),
+        bgImg: IMG.hero3,
+        bgFallback: gradient('rgba(255,250,220,0.7)', 'rgba(255,235,180,0.9)'),
         tag: 'LIMITED • SMALL RUN',
+        alt: 'Gradient luxury background with subtle shimmer',
       },
     ],
     []
@@ -72,42 +110,48 @@ export default function App() {
       name: 'Rose-Tan Reverie',
       price: '$68',
       limited: true,
-      bg: gradient('rgba(232,175,175,0.35)', 'rgba(232,175,175,0.75)'),
+      image: IMG.product1,
+      alt: 'Rose-tan candle in a luxe setting',
     },
     {
       id: 2,
       name: 'Dusk-Blue Drift',
       price: '$72',
       limited: true,
-      bg: gradient('rgba(80,110,180,0.25)', 'rgba(80,110,180,0.65)'),
+      image: IMG.product2,
+      alt: 'Dusk-blue candle with elegant backdrop',
     },
     {
       id: 3,
       name: 'Champagne Glow',
       price: '$74',
       limited: false,
-      bg: gradient('rgba(255,230,180,0.35)', 'rgba(255,215,140,0.7)'),
+      image: IMG.product3,
+      alt: 'Champagne-toned candle with soft highlights',
     },
     {
       id: 4,
       name: 'Charcoal Ember',
       price: '$70',
       limited: true,
-      bg: gradient('rgba(47,47,50,0.35)', 'rgba(47,47,50,0.75)'),
+      image: IMG.product4,
+      alt: 'Charcoal candle with moody light',
     },
     {
       id: 5,
       name: 'Coral Spark',
       price: '$69',
       limited: false,
-      bg: gradient('rgba(255,150,120,0.3)', 'rgba(255,120,90,0.6)'),
+      image: IMG.product5,
+      alt: 'Coral-inspired candle in playful scene',
     },
     {
       id: 6,
       name: 'Lime Flicker',
       price: '$66',
       limited: true,
-      bg: gradient('rgba(190,255,170,0.35)', 'rgba(160,240,130,0.7)'),
+      image: IMG.product6,
+      alt: 'Lime-accent candle with fresh vibe',
     },
   ];
 
@@ -158,7 +202,24 @@ export default function App() {
           </div>
         </div>
         <div className="col visual card-soft">
-          <div className="story-visual shimmering" />
+          <div className="story-visual shimmering" role="img" aria-label="Artisan pouring candle wax in a studio">
+            <picture>
+              <source srcSet={`${IMG.story}&fm=webp`} type="image/webp" />
+              <img
+                src={IMG.story}
+                alt="Artisan pouring candle wax in a studio"
+                loading="lazy"
+                decoding="async"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  objectPosition: 'center',
+                  borderRadius: 'var(--radius-lg)',
+                }}
+              />
+            </picture>
+          </div>
         </div>
       </section>
 
@@ -193,7 +254,18 @@ export default function App() {
             </p>
             <button className="btn waitlist">Join the Waitlist</button>
           </div>
-          <div className="hype-visual shimmering dusk" />
+          <div className="hype-visual shimmering dusk" role="img" aria-label="Dusk blue abstract lights">
+            <picture>
+              <source srcSet={`${IMG.hype}&fm=webp`} type="image/webp" />
+              <img
+                src={IMG.hype}
+                alt="Dusk blue abstract lights"
+                loading="lazy"
+                decoding="async"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'var(--radius-md)' }}
+              />
+            </picture>
+          </div>
         </div>
       </section>
 
@@ -270,7 +342,18 @@ export default function App() {
               <div className="thanks">You’re on the list. Welcome ✨</div>
             )}
           </div>
-          <div className="right shimmering" />
+          <div className="right shimmering" role="img" aria-label="Community studio moodboard">
+            <picture>
+              <source srcSet={`${IMG.community}&fm=webp`} type="image/webp" />
+              <img
+                src={IMG.community}
+                alt="Community studio moodboard"
+                loading="lazy"
+                decoding="async"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'var(--radius-md)' }}
+              />
+            </picture>
+          </div>
         </div>
       </section>
 
@@ -304,24 +387,47 @@ function HeroCarousel({ slides, active, setActive }) {
         <div
           key={i}
           className={`hero-slide ${i === active ? 'active' : ''}`}
-          style={{ backgroundImage: s.bg }}
+          style={{ backgroundImage: s.bgFallback }}
           aria-hidden={i !== active}
         >
+          <picture aria-hidden="true">
+            {/* Prefer modern formats; fall back to jpeg */}
+            <source srcSet={`${s.bgImg}&fm=webp`} type="image/webp" />
+            <img
+              src={`${s.bgImg}`}
+              alt=""
+              loading="eager"
+              decoding="async"
+              style={{
+                position: 'absolute',
+                inset: 0,
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center',
+                filter: 'brightness(1.02)',
+              }}
+            />
+          </picture>
           <div className="hero-overlay">
             <div className="tag">{s.tag}</div>
             <h1 className="display">{s.headline}</h1>
             <p className="sub">{s.sub}</p>
-            <button className="btn coral hover-raise">{s.cta}</button>
+            <button className="btn coral hover-raise" aria-label={`${s.cta} — ${s.headline}`}>
+              {s.cta}
+            </button>
           </div>
         </div>
       ))}
-      <div className="hero-dots">
-        {slides.map((_, i) => (
+      <div className="hero-dots" role="tablist" aria-label="Hero slides">
+        {slides.map((s, i) => (
           <button
             key={i}
             className={`dot-btn ${i === active ? 'on' : ''}`}
             onClick={() => setActive(i)}
-            aria-label={`Go to slide ${i + 1}`}
+            aria-label={`Go to slide ${i + 1}: ${s.headline}`}
+            role="tab"
+            aria-selected={i === active}
           />
         ))}
       </div>
@@ -333,11 +439,24 @@ function ProductCard({ product }) {
   return (
     <div className="product-card card-soft">
       {product.limited && <div className="corner-flag">Limited</div>}
-      <div className="product-visual shimmering" style={{ backgroundImage: product.bg }} />
+      <div className="product-visual shimmering" aria-label={product.alt}>
+        <picture>
+          <source srcSet={`${product.image}&fm=webp`} type="image/webp" />
+          <img
+            src={product.image}
+            alt={product.alt}
+            loading="lazy"
+            decoding="async"
+            width="600"
+            height="420"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
+          />
+        </picture>
+      </div>
       <div className="product-info">
         <h4 className="product-name">{product.name}</h4>
         <p className="price">{product.price}</p>
-        <button className="btn outline small">View Details</button>
+        <button className="btn outline small" aria-label={`View details for ${product.name}`}>View Details</button>
       </div>
     </div>
   );

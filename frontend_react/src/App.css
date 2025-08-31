@@ -83,6 +83,7 @@ img { max-width: 100%; display: block; }
   transition: opacity .9s ease, transform 1.2s ease;
   background-size: cover; background-position: center;
   display: grid; place-items: center;
+  isolation: isolate; /* ensure overlay text sits above image blend */
 }
 .hero-slide.active { opacity: 1; transform: scale(1); }
 .hero-overlay {
@@ -171,6 +172,9 @@ img { max-width: 100%; display: block; }
 .product-visual {
   height: 220px; background-size: cover; background-position: center;
   transition: transform .35s ease;
+  overflow: hidden;
+  border-top-left-radius: var(--radius-md);
+  border-top-right-radius: var(--radius-md);
 }
 .product-card:hover .product-visual { transform: scale(1.04); }
 .product-info { padding: 14px 14px 16px; display: grid; gap: 6px; }
@@ -180,6 +184,10 @@ img { max-width: 100%; display: block; }
 
 /* Hype / Countdown */
 .hype { background: linear-gradient(180deg, rgba(80,110,180,0.15), rgba(80,110,180,0.05)); }
+.timer { display: grid; grid-auto-flow: column; gap: 12px; align-items: end; margin: 10px 0; }
+.timebox { text-align: center; padding: 8px 10px; background: #fff; border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow-soft); }
+.timebox .val { font-size: 22px; font-weight: 800; }
+.timebox .lbl { font-size: 11px; color: var(--muted); }
 .hype-inner {
   width: var(--container); margin: 0 auto;
   display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px;
